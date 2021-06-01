@@ -1,0 +1,103 @@
+{% extends "disastermanagement/layout.html" %}
+{% block body %}
+{% load static %}
+<head>
+    <title>AidQuest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</head>
+<body style="background:#C3DBC5;">
+<div class="container">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="height:72px; background:#FCF7FF">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="margin-left:10px;"><img src="{% static "img/logo.png" %}" height=70 width=70></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="padding-left:20px;">
+        <div class="navbar-nav ml-auto">
+            <li class="nav-item active" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'index'%}">Home  </a>
+            </li>
+            <li class="nav-item" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'about'%}">About  </a>
+            </li>
+            <li class="nav-item" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'donate'%}">Donate  </a>
+            </li>
+            <li class="nav-item" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'volunteer'%}">Volunteer  </a>
+            </li>
+            <li class="nav-item" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'floods'%}" style="font-weight:bold">Disaster Preparedness  </a>
+            </li>
+            <li class="nav-item" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'help'%}" style="color:red; font-weight:bold">Get Help  </a>
+            </li>
+            <li class="nav-item" style="padding-left:45px;">
+                <a class="nav-link" href="{%url 'contact'%}">Contact Us  </a>
+            </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div><br><br><br>
+    <div class="sidenav">  
+        <a href="{%url 'floods' %}">Floods</a>
+        <a href="{%url 'droughts'%}">Droughts</a>
+        <a href="{%url 'cyclones'%}">Cyclones</a>
+        <a href="{%url 'earthquakes'%}">Earthquakes</a>
+        <a href="{%url 'covid'%}">Covid-19</a>
+    </div>
+    <div class="main">
+    <p>
+    Floods are the most frequent type of natural disaster and occur when an overflow of water submerges land that is usually dry. Floods are often caused by heavy rainfall, rapid snowmelt or a storm surge from a tropical cyclone or tsunami in coastal areas.
+
+Floods can cause widespread devastation, resulting in loss of life and damages to personal property and critical public health infrastructure. Between 1998-2017, floods affected more than 2 billion people worldwide. People who live in floodplains or non-resistant buildings, or lack warning systems and awareness of flooding hazard, are most vulnerable to floods.
+
+There are 3 common types of floods:
+
+Flash floods are caused by rapid and excessive rainfall that raises water heights quickly, and rivers, streams, channels or roads may be overtaken.
+River floods are caused when consistent rain or snow melt forces a river to exceed capacity. 
+Coastal floods are caused by storm surges associated with tropical cyclones and tsunami.
+Between 80-90% of all documented disasters from natural hazards during the past 10 years have resulted from floods, droughts, tropical cyclones, heat waves and severe storms. Floods are also increasing in frequency and intensity, and the frequency and intensity of extreme precipitation is expected to continue to increase due to climate change.
+</p>
+<p>Avoid building in a floodplain—an area especially prone to flooding during heavy rains.
+If you do live in a floodplain, consider buying flood insurance to help with losses if, and when, a flood occurs.
+Construct barriers (levees, beams, floodwalls) to stop floodwater from entering your home. Sandbags can provide a temporary levee in an emergency.
+Seal walls in basements with waterproofing compounds to avoid seepage.
+Pay attention to weather forecasts. When heavy rain or storms are forecasted, listen to the radio or television for information on flooding risk.
+What’s worse—a flood watch or warning? A watch means flooding is possible. A warning means flooding is occurring or will occur soon.
+When a flood is imminent
+Have an emergency plan and practice survival skills, like first aid and how to disinfect water.
+Be prepared! Assemble an emergency kit in case you need to evacuate. Don't forget to include necessary prescription medications and a small first aid kit.
+Charge cell phone batteries and any reusable batteries for flashlights. Buy extra batteries in case power isn’t restored immediately.
+Heed evacuation warnings. If there is any possibility of a flash flood, move immediately to higher ground. Follow appropriate evacuation signs.
+If possible, bring in outdoor furniture and move important items to an upper floor, above possible flood levels.
+Turn off utilities at the main switches or valves if instructed. Disconnect electrical appliances.
+During a flood
+Avoid low spots, like ditches, basements, or underpasses. These become extremely dangerous during a flash flood.
+Do not walk through flooded areas. It can be difficult to tell how deep the water is and what lies underneath the water that could hurt you. Even shallow, moving water can make you fall.
+If you have to walk in water, wherever possible, walk where the water is not moving. Use a stick to check the firmness of the ground in front of you.
+Do not drive into flooded areas. Remember: “Turn around, don’t drown.” If floodwaters rise around your car, abandon the car and move to higher ground—only if you can do so safely.
+Do not touch electrical equipment if you are wet or standing in water.</p>
+<p>After a flood
+Return home only when authorities say it is safe.
+Listen for news reports to learn whether the water supply is safe to drink and where emergency shelters are located.
+Avoid floodwaters; water may be contaminated by oil, gas, or raw sewage. Water may also be electrically charged from underground or downed power lines.
+Still avoid moving water—the danger decreases only when water levels drop.
+Be aware of areas where floodwaters have receded. Roads may have weakened and could collapse under the weight of a car.
+Stay away from downed power lines and report them to the power company.
+Stay out of any building if it is surrounded by floodwaters.
+Service damaged septic tanks, cesspools, pits, and leaching systems as soon as possible. Damaged sewage systems are serious health hazards.
+Only pump water out of a flooded building when water has receded outside.
+Clean and disinfect everything that was stuck in flooded waters. Mud left from floodwater can contain sewage and chemicals.
+Be wary of lingering water inside buildings after a flood. A dehumidifier will help remove excess water and minimize mold damage.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+</body>
+{% endblock %}
