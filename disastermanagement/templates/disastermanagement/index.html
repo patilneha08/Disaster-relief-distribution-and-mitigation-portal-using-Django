@@ -9,7 +9,7 @@
 
 </head>
 
-<body style="background:#C3DBC5;">
+<body style="background:#E7E7E7;">
 <div class="container">
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="height:72px; background:#FCF7FF">
   <div class="container-fluid">
@@ -46,7 +46,50 @@
     </div>
   </div>
 </nav>
-</div><br><br><br><br><br>
+</div>
+<div class="container">
+  <div class="une">
+    <img src="{% static "img/donate.jpg" %}" height=400 width=100%>
+      <div class="words">
+      You Can Make<br> a Difference<br>
+      <div class="smallwords">
+        Support all the urgent humanitarian<br> needs with your financial gift.<br><br>
+      </div> 
+    <a href="{%url 'donate'%}" class="btn btn-primary btn-lg">Donate Now</a>
+    </div>  
+  </div>
+  <div class="une">
+    <img src="{% static "img/help.jpg" %}" height=400px width=100%>
+      <div class="rwords">
+      Reach out for help<br>
+      <div class="smallwords">
+        For all your needs, reach out to us<br> and we will link you to the right people.<br><br>
+      </div>
+     </div>
+    <div class="rbutton"><a href="{%url 'help'%}" class="btn btn-primary btn-lg">Get Help</a></div> 
+  </div>
+  <div class="une">
+    <img src="{% static "img/prepare.jpg" %}" height=400px width=100%>
+      <div class="words">
+        Be Prepared<br>
+        <div class="smallwords">
+          Take time out to prepare<br>for any unexpected disasters.<br><br>
+        </div>
+      <a href="{%url 'floods'%}" class="btn btn-primary btn-lg">Disaster Preparedness</a>
+      </div>
+  </div>
+  <div class="une">
+    <img src="{% static "img/volunteer.jpg" %}" height=400px width=100%>
+    <div class="rwords">
+      Join Us<br>
+      <div class="smallwords">
+        Become a volunteer and <br> help people in need during<br> disasters.<br><br>
+      </div>
+    </div>
+    <div class="rbutton"><a href="{%url 'volunteer'%}" class="btn btn-primary btn-lg">Volunteer</a>
+  </div>
+</div><br>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </body>

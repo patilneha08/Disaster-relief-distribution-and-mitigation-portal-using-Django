@@ -20,8 +20,8 @@ def cyclones(request):
 def earthquakes(request):
     return render(request,'disastermanagement/earthquakes.html')
 
-def covid(request):
-    return render(request,'disastermanagement/covid.html')
+def pandemic(request):
+    return render(request,'disastermanagement/pandemic.html')
 
 def donate(request):
     return render(request,'disastermanagement/donate.html')

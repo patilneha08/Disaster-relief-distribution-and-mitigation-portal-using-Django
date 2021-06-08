@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 </head>
-<body style="background:#C3DBC5;">
+<body style="background:#E7E7E7;">
 <div class="container">
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="height:72px; background:#FCF7FF">
   <div class="container-fluid">
@@ -45,13 +45,17 @@
     </div>
   </div>
 </nav>
-</div><br><br><br>
-    {% comment %} sidebar {% endcomment %}
-    <a href="{%url 'floods' %}">Floods</a>
-    <a href="{%url 'droughts'%}">Droughts</a>
-    <a href="{%url 'cyclones'%}">Cyclones</a>
-    <a href="{%url 'earthquakes'%}">Earthquakes</a>
-    <a href="{%url 'covid'%}">Covid-19</a>
+</div><br>
+    <div class="sidenav" style="margin-top:73px;">  
+        <a href="{%url 'floods' %}">Floods</a>
+        <a href="{%url 'droughts'%}" style="font-weight:bold;">Droughts</a>
+        <a href="{%url 'cyclones'%}">Cyclones</a>
+        <a href="{%url 'earthquakes'%}">Earthquakes</a>
+        <a href="{%url 'pandemic'%}">Pandemic</a>
+    </div>
+    <h2 style="text-align:center;">Droughts</h2><br>
+    <div class="main" style="margin-left:180px; text-align:justify; margin-right:20px; font-size:15px;">
+    <img style="float: right; padding-left:20px; padding-top:10px;" src="{% static "img/drought.jpg" %}" width="250" />
     <p>A drought is a period of time when an area or region experiences below-normal precipitation. The lack of adequate precipitation, either rain or snow, can cause reduced soil moisture or groundwater, diminished stream flow, crop damage, and a general water shortage. Droughts are the second-most costly weather events after hurricanes.
 
 Unlike with sudden weather events such as hurricanes, tornadoes, and thunderstorms, it is often difficult to pinpoint when a drought has started or when it has ended. The initial effects of a drought may be difficult to identify right away, so it may take weeks or months to determine that a drought has started. The end of a drought is hard to identify for the same reason. A drought may last for weeks, months, or even years. Sometimes, drought conditions can exist for a decade or more in a region. The longer a drought lasts, the greater the harmful effects it has on people.
@@ -90,5 +94,6 @@ Increasing the use of marginal waters. Both treated sewage and brackish as an im
 
 (d)
 Expanding the role of intermediate rainfed-irrigated systems: These systems have proven their significant success in many areas where expanding the conjunctive or alternating use of rainfall and irrigation water is possible through water harvesting, both micro- and macro-catchments; supplementary irrigation; and deficit irrigation.</p>
+</div>
 </body>
 {% endblock %}
