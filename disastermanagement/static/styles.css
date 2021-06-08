@@ -155,3 +155,14 @@
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
+
+
+
+.donate_details{
+  margin-top:0px;
+  margin-left: 35%;
+  margin-right:100px; 
+  width: 400px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: darkslategrey;
+}
