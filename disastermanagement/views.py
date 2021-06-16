@@ -64,12 +64,12 @@ def contact(request):
         description=request.POST.get('description')
 
         send_mail(
-            'message from' + first_name + last_name + '-' + message, #subject
-            description + phone, #message
+            'message from  ' + first_name + " " + last_name + '  -  ' + message, #subject
+            '\n' + description + '\n\n' + 'Sincerely,\n\n' + first_name + ' ' + last_name+'\n'+ email+'\n'+ phone, #message
             email, #from email
-            ['patil.neha08@yahoo.com'],
+            ['patil.neha08@yahoo.com'],#to email
         )
-    return render(request,'disastermanagement/contact.html',{
-        "message":"Message successfully sent."
-    })
-
+        return render(request,'disastermanagement/contact.html',{
+            "message":"Message successfully sent."
+        })
+    return render(request,'disastermanagement/contact.html')

@@ -9,4 +9,4 @@ class Donors(models.Model):
     amount=models.PositiveBigIntegerField
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}   {self.username}"
+        return f"{self.first_name}  {self.last_name}   {self.username}"
