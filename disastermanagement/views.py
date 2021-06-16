@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from .models import *
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -21,22 +24,29 @@ def cyclones(request):
 def earthquakes(request):
     return render(request,'disastermanagement/earthquakes.html')
 
+def landslides(request):
+    return render(request,'disastermanagement/landslides.html')
+
 def pandemic(request):
     return render(request,'disastermanagement/pandemic.html')
 
 def donate(request):
-    if request.method=='POST':
-        donation=Donors()
-        donation.first_name=request.POST.get('first_name')
-        donation.last_name=request.POST.get('last_name')
-        donation.email=request.POST.get('email')
-        donation.phone=request.POST.get('phone')
-        donation.amount=request.POST.get('amount')
-        return render(request,'disastermanagement/payment.html',{
-            "donation":donation
+    if request.method == 'POST':
+        donor=Donors()
+        donor.first_name=request.POST.get('first_name')
+        donor.last_name=request.POST.get('last_name')
+        donor.phone=request.POST.get('phone')
+        donor.email=request.POST.get('email')
+        donor.amount=request.POST.get('amount')
+        donor.save()
+        return render(request,'disastermanagement/donate1.html',{
+            "amount":donor.amount
         })
-        
-    return render(request,'disastermanagement/donate.html')
+    return render(request, 'disastermanagement/donate.html')
+
+@csrf_exempt
+def success(request):
+    return render(request, "disastermanagement/success.html")
 
 def volunteer(request):
     return render(request,'disastermanagement/volunteer.html')
@@ -45,7 +55,21 @@ def help(request):
     return render(request,'disastermanagement/help.html')
 
 def contact(request):
-    return render(request,'disastermanagement/contact.html')
+    if request.method=="POST":
+        first_name=request.POST.get('first_name')
+        last_name=request.POST.get('last_name')
+        email=request.POST.get('email')
+        phone=request.POST.get('phone')
+        message=request.POST.get('message')
+        description=request.POST.get('description')
 
-def payment(request):
-    pass
+        send_mail(
+            'message from' + first_name + last_name + '-' + message, #subject
+            description + phone, #message
+            email, #from email
+            ['patil.neha08@yahoo.com'],
+        )
+    return render(request,'disastermanagement/contact.html',{
+        "message":"Message successfully sent."
+    })
+

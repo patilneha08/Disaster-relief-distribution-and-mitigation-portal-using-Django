@@ -8,9 +8,11 @@ urlpatterns=[
     path('droughts',views.droughts,name="droughts"),
     path('cyclones',views.cyclones,name="cyclones"),
     path('earthquakes',views.earthquakes,name="earthquakes"),
+    path('landslides',views.landslides,name="landslides"),
     path('pandemic',views.pandemic,name="pandemic"),
     path('donate',views.donate,name="donate"),
     path('volunteer',views.volunteer,name="volunteer"),
     path('help',views.help,name="help"),
     path('contact',views.contact,name="contact"),
+    path('success',views.success,name="success"),
 ]

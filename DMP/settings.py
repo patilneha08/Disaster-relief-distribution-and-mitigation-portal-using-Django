@@ -25,6 +25,15 @@ SECRET_KEY = 'django-insecure-$59v_3651xg(ldhiqb29l6c$tx-$9+-3d@7f-ow_38&yayee@@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#Email Settings
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT='587'
+EMAIL_HOST_USER='patil.neha0008@gmail.com'
+EMAIL_HOST_PASSWORD='nehmar2008'
+EMAIL_USE_TLS=True
+# EMAIL_USE_SSL=False
+
 ALLOWED_HOSTS = []
 
 
@@ -38,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +134,12 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+PAYPAL_RECEIVER_EMAIL = 'seemapatil123@gmail.com'
+
+PAYPAL_TEST = True
+
