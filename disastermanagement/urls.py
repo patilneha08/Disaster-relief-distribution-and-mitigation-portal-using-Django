@@ -15,4 +15,5 @@ urlpatterns=[
     path('help',views.help,name="help"),
     path('contact',views.contact,name="contact"),
     path('success',views.success,name="success"),
+    path("<int:ngo_id>/selectngo",views.selectngo,name="selectngo"),
 ]

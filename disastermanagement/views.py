@@ -32,12 +32,12 @@ def pandemic(request):
 
 def donate(request):
     if request.method == 'POST':
-        donor=Donors()
+        donor=Donor()
         donor.first_name=request.POST.get('first_name')
         donor.last_name=request.POST.get('last_name')
         donor.phone=request.POST.get('phone')
-        donor.email=request.POST.get('email')
         donor.amount=request.POST.get('amount')
+        donor.email=request.POST.get('email')
         donor.save()
         return render(request,'disastermanagement/donate1.html',{
             "amount":donor.amount
@@ -49,7 +49,28 @@ def success(request):
     return render(request, "disastermanagement/success.html")
 
 def volunteer(request):
-    return render(request,'disastermanagement/volunteer.html')
+    if request.method=="POST":
+        ngos=NGO.objects.all()
+        volunteer=Volunteer()
+        volunteer.first_name=request.POST.get('first_name')
+        volunteer.last_name=request.POST.get('last_name')
+        volunteer.email=request.POST.get('email')
+        volunteer.phone=request.POST.get('phone')
+        volunteer.altphone=request.POST.get('altphone')
+        volunteer.gender=request.POST.get('gender')
+        volunteer.age=request.POST.get('age')
+        volunteer.address=request.POST.get('address')
+        volunteer.bloodgroup=request.POST.get('bloodgroup')
+        volunteer.aadhar=request.POST.get('aadhar')
+        volunteer.service=request.POST.get('service')
+        volunteer.save()
+        request.session['volunteer']=volunteer.id
+        return render(request,'disastermanagement/selectngo.html',{
+            "volunteer":volunteer, "ngos":ngos
+        })
+    return render(request, 'disastermanagement/volunteer.html')
+
+
 
 def help(request):
     return render(request,'disastermanagement/help.html')
@@ -65,7 +86,7 @@ def contact(request):
 
         send_mail(
             'message from  ' + first_name + " " + last_name + '  -  ' + message, #subject
-            '\n' + description + '\n\n' + 'Sincerely,\n\n' + first_name + ' ' + last_name+'\n'+ email+'\n'+ phone, #message
+            '\n' + description + '\n\n' + 'Sincerely,\n\n' + first_name + ' ' + last_name+'\n'+ email +'\n'+ phone, #message
             email, #from email
             ['patil.neha08@yahoo.com'],#to email
         )
@@ -73,3 +94,21 @@ def contact(request):
             "message":"Message successfully sent."
         })
     return render(request,'disastermanagement/contact.html')
+
+def selectngo(request, ngo_id):
+    if request.method == 'POST':
+        temp=ngo_id
+        ngo=NGO.objects.get(id=temp)
+        volunteer=Volunteer.objects.get(id=request.session["volunteer"])
+
+        send_mail(
+            'Volunteer request from  ' + volunteer.first_name + " " + volunteer.last_name, #subject
+            '\nThis is to inform you that I, ' + volunteer.first_name + " " + volunteer.last_name  + ', would like to become a volunteer at your esteemed organization. My details are as follows-\n\nName-  ' + volunteer.first_name + " " + volunteer.last_name + "\nContact Number-  +91" + str(volunteer.phone) + "\nAlternate Contact Number-  +91" + str(volunteer.altphone) + "\nEmail Address-  " + volunteer.email + "\nGender-  " + volunteer.gender + "\nAge-  " + str(volunteer.age) + "\nAddress: \n" + volunteer.address + "\nBlood Group-  " + volunteer.bloodgroup + "\nAadhar Number-  "+ str(volunteer.aadhar) + "\nServices provided-  " + volunteer.service + "\n\nKindly look into the matter and do the needful at the earliest." + "\n\nSincerely,\n\n" + volunteer.first_name + ' ' + volunteer.last_name, #message
+            settings.EMAIL_HOST_USER, #from email
+            [ngo.email],#to email
+            fail_silently=False,
+        )
+        return render(request,'disastermanagement/volunteer.html',{
+            "message":"Request successfully sent."
+        })
+    return render(request,'disastermanagement/selectngo.html')
