@@ -71,8 +71,61 @@ def volunteer(request):
     return render(request, 'disastermanagement/volunteer.html')
 
 
-
 def help(request):
+    if request.method=="POST":
+        service=request.POST.get('service')
+        if service=="Nursing":
+            temp=Hospital.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Medicine Supply":
+            temp=Chemist.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Emergency Medical Support":
+            temp=Hospital.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Medical Equipment Supply":
+            temp=Chemist.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Basic Amenities (blankets/clothes/food/water etc.)":
+            temp1=NGO.objects.all()
+            temp2=General_Store.objects.all()
+            temp=temp1+temp2
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Groceries":
+            temp=Grocerie.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Basic tools(flashlight/batteries/knife etc.)":
+            temp=General_Store.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Vaccines":
+            temp=Hospital.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Other":
+            temp=NGO.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
+        elif service=="Rescue":
+            temp=Rescue.objects.all()
+            return render(request,'disastermanagement/service.html',{
+                "temp":temp
+            })
     return render(request,'disastermanagement/help.html')
 
 def contact(request):

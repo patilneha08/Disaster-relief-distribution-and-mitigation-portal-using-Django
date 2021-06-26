@@ -47,17 +47,19 @@
 </nav>
 </div>
 <br>
-<div style="text-align:center;"><h3>Hello {{volunteer.first_name}}, Select the NGO you would like to volunteer in.</h3></div><br>
-{% for ngo in ngos %}
-    <form action="{%url 'selectngo' ngo.id %}" method="POST">
-        {% csrf_token %}
-        <strong>{{ngo.name}}</strong><br>
-        <strong>{{ngo.phone}}</strong><br>
-        <strong>{{ngo.email}}</strong><br>
-        <strong>{{ngo.address}}</strong><br>
-        <input type="submit" class="btn btn-dark btn-lg" name="ngo_id" value="Select NGO"></div><br><br>
-    </form> 
-{% endfor %}
-    
+<div style="text-align:center; font-family: Arial, serif;"><h3>Hello {{volunteer.first_name}}, Select the NGO you would like to volunteer in.</h3></div><br>
+    {% for ngo in ngos %}
+        <div class="ngobar" style="width:800px; margin-left:200px;border: 2px solid grey; box-shadow: 5px 10px #888888; background-color:white; padding:30px; ">
+        <form action="{%url 'selectngo' ngo.id %}" method="POST">
+            {% csrf_token %}
+            <strong>Name of NGO-</strong>     {{ngo.name}}<br>
+            <strong>Contact Number-</strong>  {{ngo.phone}}<br>
+            <strong>Email Address-</strong>   {{ngo.email}}<br>
+            <strong>Address-</strong>         {{ngo.address}}<br><br>
+            <input style="margin-left:600px;" type="submit" class="btn btn-primary btn-lg" name="ngo_id" value="Select NGO"></div><br><br>
+        </form> 
+        </div>
+    {% endfor %}
+</div>
 </body>
 {% endblock %}

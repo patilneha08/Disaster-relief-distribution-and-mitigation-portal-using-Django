@@ -46,37 +46,40 @@
   </div>
 </nav>
 </div><br>
-<div id="paypal-button-container"></div>
+<div class="pp" style="margin-left:20px; width:400px; background-color:white; box-shadow:5px 10px #888888; padding:20px; margin-left:400px; margin-top:30px;">
+<h3 style="text-align:center; font-family:Arial, serif">Donate now</h3><br>
+    <div id="paypal-button-container"></div>
+        
+        <!-- Include the PayPal JavaScript SDK -->
+        <script src="https://www.paypal.com/sdk/js?client-id=AfwwX4hcgxUPHz92bso4uslVWj4SJR_wb1-dwfMkxG7TXjKOIOUzjcmCUBfTdqa0nrU8Qy3-Zd4LanCg&currency=USD"></script>
+        
+        <script>
+            // Render the PayPal button into #paypal-button-container
+            paypal.Buttons({
 
-    <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AfwwX4hcgxUPHz92bso4uslVWj4SJR_wb1-dwfMkxG7TXjKOIOUzjcmCUBfTdqa0nrU8Qy3-Zd4LanCg&currency=USD"></script>
+                // Set up the transaction
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: {{amount}}
+                            }
+                        }]
+                    });
+                },
 
-    <script>
-        // Render the PayPal button into #paypal-button-container
-        paypal.Buttons({
-
-            // Set up the transaction
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: {{amount}}
-                        }
-                    }]
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Show a success message to the buyer
-                    location.replace("{%url 'success'%}");
-                });
-            }
+                // Finalize the transaction
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // Show a success message to the buyer
+                        location.replace("{%url 'success'%}");
+                    });
+                }
 
 
-        }).render('#paypal-button-container');
-    </script>
-</body>
+            }).render('#paypal-button-container');
+        </script>
+    </div>
+</div>
 </body>
 {% endblock %}

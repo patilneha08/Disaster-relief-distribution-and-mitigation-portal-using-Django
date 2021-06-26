@@ -45,7 +45,7 @@
   </div>
 </nav>
 </div><br>
-<div style="margin-top:0px; margin-left: 35%; margin-right:100px; width: 400px;" class="donate_details">
+<div style="margin-top:0px; margin-left: 35%; margin-right:100px; width: 400px; background-color:white; padding:20px; border: 2px solid grey; box-shadow: 5px 10px #888888;" class="donate_details">
     <form action="{%url 'volunteer'%}" method="POST">
     {% csrf_token %}
         <h4 id="blogin" style="text-align:center;">Volunteer Details</h4> <br>
@@ -109,10 +109,11 @@
         <input type="radio" id="other" name="service" value="Other">
         <label for="other"> Other</label><br><br>   
 
-        <input type="submit" class="btn btn-primary" value="Volunteer"><br>
+        <input style="margin-left:130px;" type="submit" class="btn btn-primary" value="Volunteer"><br>
     <br>   
     </form>
 </div>
+<br><br>
 {{message}}
 </body>
 {% endblock %}

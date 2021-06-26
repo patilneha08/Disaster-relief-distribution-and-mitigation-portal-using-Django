@@ -47,37 +47,37 @@
 </nav>
 </div>
 <br>
-<div style="text-align:center;"<h3>Get in Touch</h3>
-<h6>Our team is happy to answer your questions. Fill out the form and we'll be in touch as soon as possible.</h6></div>
+<div style="text-align:center;"><h3>Get in Touch</h3>
+<h5>Our team is happy to answer your questions. Fill out the form and we'll be in touch as soon as possible.</h5></div>
 <div class="contain">
-<div class="contact">
+<div class="contact" style="background-color:white; border: 2px solid grey; box-shadow: 5px 10px #888888;">
   <form action="{%url 'contact'%}" method="POST">
     {% csrf_token %}
 
-    <span style="color:white; font-weight:bold;">First Name</span><br>
+    <span style="color:dark-grey;">First Name</span><br>
     <input type="text" name="first_name" class="form-control" autocomplete="off" required><br>
 
-    <span style="color:white; font-weight:bold;">Last Name</span><br>
+    <span style="color:dark-grey;">Last Name</span><br>
     <input type="text" name="last_name" class="form-control" autocomplete="off" required><br>
 
-    <span style="color:white; font-weight:bold;">Email Address</span><br>
+    <span style="color:dark-grey;">Email Address</span><br>
     <input type="email" name="email" class="form-control" autocomplete="off" required><br>
 
-    <span style="color:white; font-weight:bold;">Contact Number</span><br>
+    <span style="color:dark-grey;">Contact Number</span><br>
     <input type="text" name="phone" class="form-control" autocomplete="off" required><br>
-    <span style="color:white; font-weight:bold;">Message</span><br>
+    <span style="color:dark-grey;">Message</span><br>
 
     <input type="text" class="form-control" id="exampleInputEmail1" name="message" autocomplete="off" required><br>
-    <span style="color:white; font-weight:bold;">Details</span><br>
+    <span style="color:dark-grey;">Details</span><br>
     <textarea id="w3review" class="form-control" name="description" rows="4" cols="50" required></textarea><br>
-    <input type="submit" class="btn btn-primary" value="Send request"><br>
+    <input style="margin-left:155px;"type="submit" class="btn btn-primary" value="Send request"><br>
   </form>
 </div>
 <div style="margin-top:150px; margin-left: 40px;" class="contact2">
-  <h6>Or contact us using the following</h6><br>
-  Address- jhadlkasndlkasd;klas<br>
-  Phone-+918748973935<br>
-  Email-aidquest@gmail.com
+  <h6>Or contact us using the following:</h6><br>
+  <pre>Address:<br>        Udyambag Industrial Area,<br>        Belagavi,<br>        Karnataka 590006<br></pre>
+  <pre>Phone:  +918748973935<br></pre>
+  <pre>Email:  aidquest.klsgitec2021@gmail.com</pre>
 </div>
 </div><br><br>
 {{message}}

@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{%url 'about'%}">About  </a>
             </li>
             <li class="nav-item" style="padding-left:45px;">
-                <a class="nav-link" href="{%url 'donate'%}" style=" font-weight:bold;">Donate  </a>
+                <a class="nav-link" href="{%url 'donate'%}">Donate  </a>
             </li>
             <li class="nav-item" style="padding-left:45px;">
                 <a class="nav-link" href="{%url 'volunteer'%}">Volunteer  </a>
@@ -45,28 +45,17 @@
   </div>
 </nav>
 </div><br>
-<div style="margin-top:0px; margin-left: 35%; margin-right:100px; width: 400px;  background-color:white; padding:20px; border: 2px solid grey; box-shadow: 5px 10px #888888;" class="donate_details">
-    <form action="{%url 'donate'%}" method="POST">
-    {% csrf_token %}
-        <h4 id="blogin" style="text-align:center;">Donate Now</h4> <br>
-        First Name<br>
-        <input type="text" name="first_name" class="form-control" autocomplete="off" required><br>
+<div style="text-align:center; font-family: Arial, serif;"><h3>List of Service Providers for your selected service.</h3></div><br>
 
-        Last Name<br>
-        <input type="text" name="last_name" class="form-control" autocomplete="off" required><br>
+{% for temps in temp %}
+<div class="ngobar" style="width:800px; margin-left:200px;border: 2px solid grey; box-shadow: 5px 10px #888888; background-color:white; padding:30px; ">
+        {% csrf_token %}
+        <strong>Name-</strong> {{temps.name}}<br>
+        <strong>Contact Number-</strong> {{temps.phone}}<br>
+        <strong>Email-address-</strong> {{temps.email}}</strong><br>
+        <strong>Address- </strong> {{temps.address}}</strong><br> 
+        </div><br><br>
+{% endfor %}
 
-        Contact Number<br>
-        <input type="text" name="phone" class="form-control" autocomplete="off" required><br>
-
-        Email Address<br>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" autocomplete="off" required>
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div><br>
-        Amount<br>
-        <input type="text" name="amount" class="form-control" autocomplete="off" required><br>
-
-        <input style="margin-left:140px;"type="submit" class="btn btn-primary" value="Donate"><br>
-    <br>   
-    </form>
-</div><br><br>
 </body>
 {% endblock %}

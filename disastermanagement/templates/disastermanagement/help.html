@@ -45,5 +45,47 @@
   </div>
 </nav>
 </div><br>
+<div style="margin-top:0px; margin-left: 35%; margin-right:100px; width: 400px; background-color:white; padding:20px; border: 2px solid grey; box-shadow: 5px 10px #888888;" class="donate_details">
+    <form action="{%url 'help'%}" method="POST">
+    {% csrf_token %}
+        <h4 id="blogin" style="text-align:center;">Get Help</h4> <br>
+        First Name<br>
+        <input type="text" name="first_name" class="form-control" autocomplete="off" required><br>
+
+        Last Name<br>
+        <input type="text" name="last_name" class="form-control" autocomplete="off" required><br>
+
+        Contact Number<br>
+        <input type="text" name="phone" class="form-control" autocomplete="off" required><br>
+
+        Email Address<br>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" autocomplete="off" required>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div><br>
+
+        What Service do you need help in?<br><Br>
+        <input type="radio" id="rescue" name="service" value="Rescue">
+        <label for="rescue">Rescue</label><br>
+        <input type="radio" id="nursing" name="service" value="Nursing">
+        <label for="nursing"> Nursing</label><br>
+        <input type="radio" id="medicines" name="service" value="Medicine Supply">
+        <label for="medicines"> Medicine Supply</label><br>
+        <input type="radio" id="medicalsupport" name="service" value="Emergency Medical Support">
+        <label for="medicalsupport">Emergency Medical Support</label><br>
+        <input type="radio" id="medical" name="service" value="Medical Equipment Supply">
+        <label for="medical"> Medical Equipment Supply </label><br>
+        <input type="radio" id="basic" name="service" value="Basic Amenities (blankets/clothes/food/water etc.)">
+        <label for="basic"> Basic Amenities (blankets/clothes/food/water etc.)</label><br>
+        <input type="radio" id="groceries" name="service" value="Groceries">
+        <label for="groceries"> Groceries</label><br>
+        <input type="radio" id="tools" name="service" value="Basic tools(flashlight/batteries/knife etc.)">
+        <label for="tools"> Basic tools(flashlight/batteries/knife etc.)</label><br>
+        <input type="radio" id="vaccines" name="service" value="Vaccines">
+        <label for="vaccines"> Vaccines</label><br>
+        <input type="radio" id="other" name="service" value="Other">
+        <label for="other">Other</label><br><br>   
+        <input style="margin-left:140px;" type="submit" class="btn btn-primary" value="Get Help"><br>
+    <br>   
+    </form>
+</div><br><br>
 </body>
 {% endblock %}
