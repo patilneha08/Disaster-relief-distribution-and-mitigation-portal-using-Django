@@ -3,7 +3,10 @@ from django.http import HttpResponse
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
-from django.conf import settings
+from django.conf import LazySettings, settings
+from ipstack import GeoLookup
+import requests
+import json
 
 # Create your views here.
 def index(request):
@@ -46,7 +49,9 @@ def donate(request):
 
 @csrf_exempt
 def success(request):
-    return render(request, "disastermanagement/success.html")
+    return render(request, "disastermanagement/donate.html",{
+        "message":"Congratulations! Your Payment was successful!"
+    })
 
 def volunteer(request):
     if request.method=="POST":
@@ -141,7 +146,7 @@ def contact(request):
             'message from  ' + first_name + " " + last_name + '  -  ' + message, #subject
             '\n' + description + '\n\n' + 'Sincerely,\n\n' + first_name + ' ' + last_name+'\n'+ email +'\n'+ phone, #message
             email, #from email
-            ['patil.neha08@yahoo.com'],#to email
+            ['aidquest.klsgitec2021@gmail.com'],#to email
         )
         return render(request,'disastermanagement/contact.html',{
             "message":"Message successfully sent."
@@ -162,6 +167,32 @@ def selectngo(request, ngo_id):
             fail_silently=False,
         )
         return render(request,'disastermanagement/volunteer.html',{
-            "message":"Request successfully sent."
+            "message":"Congratulations! Application successfully sent!"
         })
     return render(request,'disastermanagement/selectngo.html')
+
+def sos(request):
+    if request.method == 'POST':
+        phone=request.POST.get('phone')
+        geo_lookup=GeoLookup("e36ffa1fcc7c2d834c98515687002638")
+        location=geo_lookup.get_own_location()
+        lat=location['latitude']
+        lng=location['longitude']
+        region=location['region_name']
+        point=lat,lng 
+        print(location)
+        send_mail(
+            'Emergency SOS request', #subject
+            '\nA user is currently trying to use the Emergency SOS feature. Kindly contact the user using the information below.\n\n'+phone, #message
+            settings.EMAIL_HOST_USER, #from email
+            ['aidquest.klsgitec2021@gmail.com'],#to email
+            fail_silently=False,
+        )
+        # resp = requests.post('https://textbelt.com/text', {
+        # 'phone': '+918748973935',
+        # 'message': 'Hello world',
+        # 'key': 'textbelt',
+        # })
+        # print(resp.json())
+        return render(request,'disastermanagement/sos.html')
+    return render(request,'disastermanagement/index.html')

@@ -45,9 +45,14 @@
   </div>
 </nav>
 </div><br>
+{% if message %}
+    <div class="alert alert-primary" role="alert">
+    {{message}}
+    </div>
+{% endif %}
 <div style="margin-top:0px; margin-left: 35%; margin-right:100px; width: 400px; background-color:white; padding:20px; border: 2px solid grey; box-shadow: 5px 10px #888888;" class="donate_details">
     <form action="{%url 'volunteer'%}" method="POST">
-    {% csrf_token %}
+        {% csrf_token %}
         <h4 id="blogin" style="text-align:center;">Volunteer Details</h4> <br>
         First Name<br>
         <input type="text" name="first_name" class="form-control" autocomplete="off" required><br>
@@ -110,10 +115,9 @@
         <label for="other"> Other</label><br><br>   
 
         <input style="margin-left:130px;" type="submit" class="btn btn-primary" value="Volunteer"><br>
-    <br>   
+        <br>   
     </form>
 </div>
 <br><br>
-{{message}}
 </body>
 {% endblock %}
