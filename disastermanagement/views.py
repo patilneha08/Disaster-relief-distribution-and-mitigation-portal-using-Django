@@ -7,6 +7,8 @@ from django.conf import LazySettings, settings
 from ipstack import GeoLookup
 import requests
 import json
+import smtplib 
+import pygeoip 
 
 # Create your views here.
 def index(request):
@@ -173,26 +175,43 @@ def selectngo(request, ngo_id):
 
 def sos(request):
     if request.method == 'POST':
+        ip=requests.get('https://api.ipify.org?format=json')
+        ip_data=json.loads(ip.text)
+        res=requests.get('http://ip-api.com/json/'+ ip_data["ip"])
+        location_data_one = res.text
+        location_data = json.loads(location_data_one)
+
+
         phone=request.POST.get('phone')
-        geo_lookup=GeoLookup("e36ffa1fcc7c2d834c98515687002638")
-        location=geo_lookup.get_own_location()
-        lat=location['latitude']
-        lng=location['longitude']
-        region=location['region_name']
+        # geo_lookup=GeoLookup("e36ffa1fcc7c2d834c98515687002638")
+        # location=geo_lookup.get_own_location()
+        lat=location_data['lat']
+        lng=location_data['lon']
+        ip_address=location_data['query']
+        print(ip_address)
+        # region=location['region_name']
         point=lat,lng 
-        print(location)
+        print(point)
+        gip=pygeoip.GeoIP("disastermanagement/GeoLiteCity.dat")
+        temp=gip.record_by_addr(ip_address)
+        for key, val in temp.items():
+            print('%s:%s' % (key,val))
         send_mail(
             'Emergency SOS request', #subject
-            '\nA user is currently trying to use the Emergency SOS feature. Kindly contact the user using the information below.\n\n'+phone, #message
+            '\nA user is currently trying to use the Emergency SOS feature. Kindly contact the user using the information below.\n\nPhone Number- '+phone, #message
             settings.EMAIL_HOST_USER, #from email
             ['aidquest.klsgitec2021@gmail.com'],#to email
             fail_silently=False,
         )
-        # resp = requests.post('https://textbelt.com/text', {
-        # 'phone': '+918748973935',
-        # 'message': 'Hello world',
-        # 'key': 'textbelt',
-        # })
-        # print(resp.json())
+        #send sms
+        Ph="+918748973935"
+        Message="A user is currently tryinh to use SOS. contact the user using the following number-"+phone
+        WhatsappData(Ph,Message)
         return render(request,'disastermanagement/sos.html')
-    return render(request,'disastermanagement/index.html')
+    return render(request,'disastermanagement/index.html') 
+
+def WhatsappData(Ph, Message):
+    import time
+    import webbrowser
+    import pyautogui as pg
+

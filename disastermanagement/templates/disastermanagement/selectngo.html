@@ -29,7 +29,7 @@
                 <a class="nav-link" href="{%url 'donate'%}">Donate  </a>
             </li>
             <li class="nav-item" style="padding-left:45px;">
-                <a class="nav-link" href="{%url 'volunteer'%}">Volunteer  </a>
+                <a class="nav-link" href="{%url 'volunteer'%}"  style="font-weight:bold">Volunteer  </a>
             </li>
             <li class="nav-item" style="padding-left:45px;">
                 <a class="nav-link" href="{%url 'floods'%}">Disaster Preparedness  </a>
@@ -38,7 +38,7 @@
                 <a class="nav-link" href="{%url 'help'%}" style="color:red; font-weight:bold">Get Help  </a>
             </li>
             <li class="nav-item" style="padding-left:45px;">
-                <a class="nav-link" href="{%url 'contact'%}" style="font-weight:bold">Contact Us  </a>
+                <a class="nav-link" href="{%url 'contact'%}">Contact Us  </a>
             </li>
         </div>
       </ul>
@@ -46,7 +46,7 @@
   </div>
 </nav>
 </div>
-<br>
+<br><br><br><br>
 <div style="text-align:center; font-family: Arial, serif;"><h3>Hello {{volunteer.first_name}}, Select the NGO you would like to volunteer in.</h3></div><br>
     {% for ngo in ngos %}
         <div class="ngobar" style="width:800px; margin-left:200px;border: 2px solid grey; box-shadow: 5px 10px #888888; background-color:white; padding:30px; ">
